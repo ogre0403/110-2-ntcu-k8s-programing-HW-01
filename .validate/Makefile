@@ -1,5 +1,6 @@
 image := $(shell grep -rh "image" manifest | cut -d ":" -f2- | sed -e 's/^[[:space:]]*//')
-kind_name := chart-testing
+kind_name := kind
+# kind_name := chart-testing
 
 
 prepare: 

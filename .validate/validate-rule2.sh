@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-cid=`docker ps -q`
+cid=`docker ps -f name=control-plane -q`
 
 
 svc=`for f in ./manifest/*; do cat ${f} | yq '(.|select(.kind == "Service")).metadata.name' ; done`
