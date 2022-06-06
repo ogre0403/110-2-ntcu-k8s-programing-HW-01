@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo ""
+echo "測試是否有建立Deployment 與 Service"
 
 svc=`for f in ./manifest/*; do cat ${f} | yq '(.|select(.kind == "Service")).metadata.name' ; done`
 deployment=`for f in ./manifest/*; do cat ${f} | yq '(.|select(.kind == "Deployment")).metadata.name' ; done`
@@ -26,3 +28,5 @@ if [[ $RET != 0 ]]; then
     echo "查無core/v1 Service: $svc"
     exit 1
 fi
+
+echo "........ PASS"

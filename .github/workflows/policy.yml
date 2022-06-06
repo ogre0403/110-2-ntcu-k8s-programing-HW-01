@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: validate-deadline
         run: bash .validate/validate-deadline.sh
-  vaildate-HW1:
+  vaildate-HW:
     needs: validate-deadline
     runs-on: ubuntu-latest
     steps:
