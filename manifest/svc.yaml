@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: acs108118-app
+  labels:
+    app: acs108118
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: acs108118
+  template:
+    metadata:
+      labels:
+        app: acs108118
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+---
+kind: Service
+apiVersion: v1
+metadata: 
+  name: acs108118-service
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+    nodePort: 30100
+  selector:
+    app: acs108118
+  type: NodePort
