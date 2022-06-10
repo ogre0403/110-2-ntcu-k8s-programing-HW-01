@@ -1,0 +1,36 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: apa000dep1
+spec:
+  selector:
+    matchLabels:
+      app: apa000kube
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: apa000kube
+    spec:
+      containers:
+      - name: apa000ex91
+        image: nginx
+        ports:
+        - containerPort: 80
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: apa000ser1
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    nodePort: 30100
+  selector:
+    app: apa000kube
+
+
+
